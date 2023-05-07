@@ -75,14 +75,4 @@ class brow:
     def closewindow(self):
         self.driver.close()
     
-# try:
-#     # lis = ['apple','egg','milk']
-#     # sss=[]
-#     # for i in lis:
-#     browser = brow('milk')
-#     # browser.get_soup_pages()
-#     sss = browser.get_title_price()
-    
-#     print(sss)
-# finally:
-#     pass
+

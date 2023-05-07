@@ -140,26 +140,3 @@ class analyzor:
             print(e)
 
 
-# testUserDict = {'Egg': ['700g','large'], 'Apple': ['1kg'], 'milk': ['2L']}
-# testSearchLists = [
-#     {'6.80': 'Manning Valley 18 Large Free Range Eggs 900g',
-#      '7.20': 'Sunny Queen 12 Extra Large Free Range Eggs 700g',
-#     '5.7': 'Manning Valley 12 Jumbo Free Range Eggs 800g',
-#     '7.4': 'Woolworths 12 X-large Free Range Eggs 800g'
-     
-#      },
-#     {'4.50': 'Jazz Apple Snackers 1kg Punnet',
-#      '6.90': 'Macro Mini Organic Apple 1kg',
-#      '1.1': 'Kanzi Apple Each',
-#      '3.4': 'Jazz Apple Snackers 1kg Punnet'
-#      },
-#     {
-#     '5.3': 'Macro Organic Oat Milk Unsweetened 1l',
-#      '5.7': 'Woolworths Evaporated Milk 385ml'
-#     ,'5.95': 'Hunter Belle Full Cream Milk Unhomogenised 2l',
-#       '5.60': 'Riverina Fresh Lactose Free Full Cream Milk 2l',}
-#       ]
-
-# aa = analyzor(100,testUserDict, testSearchLists)
-# l = aa.price_budget_match()
-# print(l)
