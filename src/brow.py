@@ -8,6 +8,9 @@ from bs4 import BeautifulSoup
 
 
 class brow:
+    # brow object need a item when initialized /created
+    # shopping website url is initialized already, and a webdriver object to simulate user open
+    # and search action
     def __init__(self,item) -> None:
         self.item = item
         self.url_head = "https://www.woolworths.com.au/shop/search/products?searchTerm="
@@ -44,6 +47,7 @@ class brow:
     def get_title_price(self):
         self.lists = []
         self.title_price_list ={}
+        # get pages returned by brow's own method
         pages = self.get_soup_pages()[1]
         #loop 1 or 2 pages
         for page in range(1,int(pages)+1):
@@ -71,7 +75,7 @@ class brow:
         # once applying user input, will loop items, so get a results list of different items, and same item in one dict
         self.lists.append(self.title_price_list)
         return self.lists
-    
+    # close browser manually
     def closewindow(self):
         self.driver.close()
     

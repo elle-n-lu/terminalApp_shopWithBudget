@@ -3,6 +3,7 @@ import tkinter.filedialog
 import csv
 
 class analyzor:
+    # analyzor object need three params when initialized/created
     def __init__(self, budget, user_dict: dict, search_lists: list[dict]) -> None:
         self.budget = budget
         self.user_dict = user_dict
@@ -104,12 +105,15 @@ class analyzor:
         except SystemExit as e:
             print(e)
 
+    # ask user to choose a directory to save results in csv file
     def get_path(self):
         print('choose directory to save the result file:')
         path_ = tkinter.filedialog.askdirectory()
+        # if user choose cancel, it will keep asking until user choose a dir
         while len(path_) == 0:
             print('no directory selected')
             path_ = tkinter.filedialog.askdirectory()
+        # return a dir path
         return path_
 
     # each line example:
