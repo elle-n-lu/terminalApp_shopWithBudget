@@ -16,6 +16,8 @@ class brow:
         self.driver = webdriver.Chrome()
         self.driver.maximize_window()
        
+    # according to item in shoplist, browser will search results and get pages
+    # due to next function will call this function to use the soup to extract data from different pages
     def get_soup_pages(self):
         #get html from url
         # first open browser to get pages, then loop pages to get price and title data
@@ -41,6 +43,7 @@ class brow:
         except TimeoutError:
             print('Internet delay! Quit and try again!')
     
+    # return ttle:price data and save in dict, put the dict of this item's browsing data in a list
     def get_title_price(self):
         self.lists = []
         self.title_price_list ={}
