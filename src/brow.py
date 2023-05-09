@@ -72,6 +72,7 @@ class brow:
         # once applying user input, will loop items, so get a results list of different items, and same item in one dict
         self.lists.append(self.title_price_list)
         return self.lists
+   
     # close browser manually
     def closewindow(self):
         self.driver.close()
