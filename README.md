@@ -1,18 +1,27 @@
-## R3,R4 
+## Repo Link
 [repo link](https://github.com/elle-n-lu/terminalApp_shopWithBudget)
 
-## R5
-The official Python code style guide is called "PEP 8" (Python Enhancement Proposal 8). Here are some of the key points covered in PEP 8:
+## Demo Link
+[demo link]()
+
+## Python code style guide
+The code style guide used in this project:
+
 Indentation: Use 4 spaces per indentation level.
+
 Line length: Limit all lines to a maximum of 79 characters.
+
 Naming conventions: Use lowercase for variables and functions, and use underscores to separate words. For example, my_variable_name or my_function_name().
+
 Comments: Use comments to explain your code when necessary, but avoid writing comments that simply restate the code.
+
 Imports: Import modules at the beginning of the file, and use separate lines for each import statement.
+
 Blank lines: Use blank lines to separate functions, classes, and other sections of code.
 
 Refrence: van Rossum, G., Warsaw, B., & Coghlan, N. (2001). PEP 8 -- Style Guide for Python Code. Python Enhancement Proposals. Retrieved May 8, 2023, from https://peps.python.org/pep-0008/
 
-## R6 Features
+## Features
 1. Accept user input
 user input budget and provide shoplist txt file which would be processed to a dict for the next step
 
@@ -23,7 +32,7 @@ use selenium to accumulate user browsing activity and beutifulsoup to extract se
 * calculate total price of each possible combinations
 * match keywords and budget in the shoplist provided in first step, get the final matched results and saved in local csv file for user to check
 
-## R7 Fearture implementation
+## Fearture implementation
 1. implement 1st feature:
 
 >checklist:
@@ -58,8 +67,8 @@ use selenium to accumulate user browsing activity and beutifulsoup to extract se
 * testing
 
 [Trello Link](https://trello.com/b/7nLAXghH/app)
-
-## R8 Instructions
+<img src= './docs/trello-screenshot.png' width='400px'>
+## App Instructions
 make sure python3, google chrome installed.
 * open terminal
 * chmod +x main.sh
