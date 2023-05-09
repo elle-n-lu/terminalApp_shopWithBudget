@@ -8,13 +8,12 @@ class userinput:
 
     def get_budget(self):
         # user input budget
-        try:
-            budget = float(input('print your budget:'))
-            self.budget =budget
-        except ValueError:
-            print('please input a number')
-            self.get_budget()
-        return self.budget
+        while True:
+            try:
+                budget = float(input('print your budget:'))
+                return budget
+            except ValueError:
+                print('please input a number')
         
     # open a window to select file to get path
     def get_path(self):
@@ -53,12 +52,11 @@ class userinput:
                     product= lines.split(',')[0]
                     amount = lines.split(',')[1:]
                     shoplist[product] = amount
-            self.shoplist = shoplist
-            return self.shoplist
+            return shoplist
         except FileNotFoundError:
             print('no file selected !')
     
-
+# cd = use 
 
 
 
