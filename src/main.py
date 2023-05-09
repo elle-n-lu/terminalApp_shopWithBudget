@@ -19,7 +19,9 @@ try:
     analize = analyzor(budget, user_dict, search_lists)
     c = analize.output2csv()
     print('execution end')
+# user exit error handling
 except KeyboardInterrupt:
     print('exit')
+# program execution finalize
 finally:
     print('end of listing, leaving')
