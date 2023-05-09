@@ -45,6 +45,7 @@ searchKeepListReturn2 = [
         '5.60': 'Riverina Fresh Lactose Free Full Cream Milk 2l', }
 ]
 
+# fake data provided for add_price funtion testing
 arr = [{'1.3': 'ww1'},
        {'1.3': 'ww12', '1.2': 'ww34'},
        {'1.1': 'ww18', '1.22': 'ww6', '1.51': 'ww5'}]
@@ -55,12 +56,11 @@ total = [{'3.7': [['1.3', 'www1'], ['1.3', 'ww12'], ['1.1', 'ww18']]},
          {'3.72': [['1.3', 'www1'], ['1.2', 'ww34'], ['1.22', 'ww6']]},
          {'4.11': [['1.3', 'www1'], ['1.3', 'ww34'], ['1.51', 'ww5']]}]
 
-total_price_list_return = sorted(total, key=lambda item: list(item)[0])
-
-
+# systemexit error handling
 def exitErr():
     raise SystemExit('left')
 
+# module initialization
 @pytest.fixture(scope="module")
 def createAnalyzor():
     return analyzor(12, testUserDict, testSearchLists)
@@ -79,7 +79,7 @@ def test_add_price(createAnalyzor):
     total = createAnalyzor.add_price(arr)
     assert total ==total
 
-
+# total_price_list return according to the inialized module
 budgetMatch_return = [{17.3: [['Sunny Queen 12 Extra Large Free Range Eggs 700g', '7.20'], ['Jazz Apple Snackers 1kg Punnet', '4.50'], ['Riverina Fresh Lactose Free Full Cream Milk 2l', '5.60']]},
                       {17.5: [['Woolworths 12 X-large Free Range Eggs 800g', '7.4'], ['Jazz Apple Snackers 1kg Punnet',
                                                                                       '4.50'], ['Riverina Fresh Lactose Free Full Cream Milk 2l', '5.60']]},
@@ -100,6 +100,7 @@ budgetMatch_return = [{17.3: [['Sunny Queen 12 Extra Large Free Range Eggs 700g'
                       {20.25: [['Woolworths 12 X-large Free Range Eggs 800g', '7.4'], ['Macro Mini Organic Apple 1kg', '6.90'], ['Hunter Belle Full Cream Milk Unhomogenised 2l', '5.95']]}]
 
 def test_price_budget_match(createAnalyzor):
+    # when call the funtion, returned value should match the provided one
     total_price_list_return = createAnalyzor.price_budget_match()
     # if all cost match budget, or user choose to keep going
     assert total_price_list_return == budgetMatch_return
