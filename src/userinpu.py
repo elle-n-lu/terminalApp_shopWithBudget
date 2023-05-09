@@ -5,13 +5,14 @@ import tkinter as tk
 class userinput:
     def __init__(self) -> None:
         pass
-
+    # return budget by user input
     def get_budget(self):
         # user input budget
         while True:
             try:
                 budget = float(input('print your budget:'))
                 return budget
+            #error handling
             except ValueError:
                 print('please input a number')
         
@@ -35,6 +36,7 @@ class userinput:
         while len(path_) == 0:
                 print('no file selected !')
                 path_ = tkinter.filedialog.askopenfilename()
+        # txt format check
         while '.txt' not in path_.split('/')[-1]:
                 print('please choose txtfile !')
                 path_ = tkinter.filedialog.askopenfilename()
@@ -53,6 +55,7 @@ class userinput:
                     amount = lines.split(',')[1:]
                     shoplist[product] = amount
             return shoplist
+        #error handling
         except FileNotFoundError:
             print('no file selected !')
     
