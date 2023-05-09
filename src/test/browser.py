@@ -6,6 +6,7 @@ from brow import brow
 
 test_item = 'milk'
 
+# initialize the brow module, provide a fake search item 'milk'
 @pytest.fixture(scope='module')
 def createBrow():
     return brow(test_item)
