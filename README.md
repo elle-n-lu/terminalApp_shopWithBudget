@@ -57,7 +57,7 @@ use selenium to accumulate user browsing activity and beutifulsoup to extract se
 * error handling
 * testing
 
-[Trello Link](https://trello.com/invite/b/7nLAXghH/ATTIb661bca1c32b3d93b8f0ac27cd7d74363A309F3B/app)
+[Trello Link](https://trello.com/b/7nLAXghH/app)
 
 ## R8 Instructions
 make sure python3, google chrome installed.
