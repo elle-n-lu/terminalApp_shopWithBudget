@@ -9,6 +9,7 @@ class analyzor:
         self.user_dict = user_dict
         self.search_lists = search_lists
 
+    # match keywords in shoplist and return remaining searching results
     def search_item_match_records(self):
         # general match the target amount of product in the list
         # not consider adding nultiple weights to match the target amount for now!
@@ -48,6 +49,7 @@ class analyzor:
         # save format is a list of dict: [{ price: name},{..},{..}]
         return search_keep_list
 
+    # pure function
     # add each element of 1st list to each ele of 2nd list
     def add_price(self,arr1):
         total = []
