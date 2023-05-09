@@ -4,9 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 
-'wws example'
-
-
+# 'wws example'
 class brow:
     # brow object need a item when initialized /created
     # shopping website url is initialized already, and a webdriver object to simulate user open
@@ -18,7 +16,6 @@ class brow:
         self.driver = webdriver.Chrome()
         self.driver.maximize_window()
        
-
     def get_soup_pages(self):
         #get html from url
         # first open browser to get pages, then loop pages to get price and title data
