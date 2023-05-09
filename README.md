@@ -2,7 +2,7 @@
 [repo link](https://github.com/elle-n-lu/terminalApp_shopWithBudget)
 
 ## Demo Link
-[demo link]()
+[demo link](https://youtu.be/Z7ErNIHKI1A)
 
 ## Python code style guide
 The code style guide used in this project:
