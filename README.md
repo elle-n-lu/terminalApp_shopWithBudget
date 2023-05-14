@@ -70,9 +70,10 @@ use selenium to accumulate user browsing activity and beutifulsoup to extract se
 <img src= './docs/trello-screenshot.png' width='400px'>
 ## App Instructions
 make sure python3, google chrome installed.
+* clone project then inside src folder
 * open terminal
-* chmod +x main.sh
-* run ./main.sh
+* make run.sh executable: chmod +x run.sh
+* run ./run.sh
     * input a budget which should be a number
     * choose a txt file, follow the promp to fill right format content in the txt file 
     * the program will open chrome browser to search, wait it finish
