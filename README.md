@@ -25,12 +25,12 @@ Refrence: van Rossum, G., Warsaw, B., & Coghlan, N. (2001). PEP 8 -- Style Guide
 1. Accept user input
 user input budget and provide shoplist txt file which would be processed to a dict for the next step
 
-2. According to user input, using browser searching and receive data
-use selenium to accumulate user browsing activity and beutifulsoup to extract searching data needed
+2. According to user input, simulate the product list data retrieving online
+<!-- use selenium to accumulate user browsing activity and beutifulsoup to extract searching data needed -->
 
 3. Analyzing searching data and comparing with product keywords and budget, save results in file
 * calculate total price of each possible combinations
-* match keywords and budget in the shoplist provided in first step, get the final matched results and saved in local csv file for user to check
+* match keywords and budget in the shoplist provided in first step, get the final matched results and show results in terminal or saved in local csv file for user to check 
 
 ## Fearture implementation
 1. implement 1st feature:
@@ -75,12 +75,10 @@ make sure python3, google chrome installed.
 * make run.sh executable: chmod +x run.sh
 * run ./run.sh
     * input a budget which should be a number
-    * choose a txt file, follow the promp to fill right format content in the txt file 
-    * the program will open chrome browser to search, wait it finish
-    * if there no searching results match the keywords provided, and only one item you wanna buy, then the grogram quit automaticly;
-    * if there no searching results for some item, it will promp which item not found, and ask you to enter y to continue or enter nothing to quit. If continue will match the budget.
+    * choose a path where a txt file 
+    * simulating price and product data, so all products with keywords have a match and also have a price
     * if total cost of all possible combination all more than budget, then it will ask you enter y to continue to see resutls or enter nothing to quit.
-    * choose a directory to save the possible shopping combination results, and it will save in a csv file.
+    * will show results in terminal
 
 
 

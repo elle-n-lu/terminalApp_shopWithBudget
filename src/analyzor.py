@@ -2,12 +2,15 @@ import os
 import tkinter.filedialog
 import csv
 
+
 class analyzor:
     # analyzor object need three params when initialized/created
-    def __init__(self, budget, user_dict: dict, search_lists: list[dict]) -> None:
+    def __init__(self, budget, price_list) -> None:
         self.budget = budget
-        self.user_dict = user_dict
-        self.search_lists = search_lists
+        self.price_list = price_list
+        # self.user_dict = user_dict
+        # self.search_lists = search_lists
+        # pass
 
     # match keywords in shoplist and return remaining searching results
     def search_item_match_records(self):
@@ -83,7 +86,8 @@ class analyzor:
     # {12.9: [['SOGA', '1.4'], ['SOoden Handle', '2.7'], ['La Extra Large', '2.9'], ['Lemon And Lime wrap iron 6.5cm 4PK', '5.9']]}
     def price_budget_match(self):
         try:
-            search_items = self.search_item_match_records()
+            # search_items = self.search_item_match_records()
+            search_items = self.price_list
             total_price_list = self.add_price(search_items)
             total_price_list_copy = total_price_list.copy()
             for i in range(len(total_price_list)-1,-1,-1):
@@ -109,13 +113,14 @@ class analyzor:
 
     # ask user to choose a directory to save results in csv file
     def get_path(self):
-        print('choose directory to save the result file:')
-        path_ = tkinter.filedialog.askdirectory()
-        # if user choose cancel, it will keep asking until user choose a dir
-        while len(path_) == 0:
-            print('no directory selected')
-            path_ = tkinter.filedialog.askdirectory()
+        # print('choose directory to save the result file:')
+        # path_ = tkinter.filedialog.askdirectory()
+        # # if user choose cancel, it will keep asking until user choose a dir
+        # while len(path_) == 0:
+        #     print('no directory selected')
+        #     path_ = tkinter.filedialog.askdirectory()
         # return a dir path
+        path_ = input('input the path where you want to save the csv file, e.g. /Users/front/Documents/shoplist.txt')
         return path_
 
     # each line example:
@@ -144,5 +149,4 @@ class analyzor:
                     print(f'data saved in {file_path}')
         except SystemExit as e:
             print(e)
-
 

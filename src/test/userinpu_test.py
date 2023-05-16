@@ -16,7 +16,7 @@ def createUserInpu():
 def test_get_budget( monkeypatch):
     # mock user input as 100
     monkeypatch.setattr('builtins.input', lambda _: "100")
-    budget = float(input('print your budget:'))
+    budget = float(input('print your budget:  '))
     assert budget == float('100')
 
 def test_get_shoplist(createUserInpu):

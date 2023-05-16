@@ -30,16 +30,17 @@ class userinput:
             '\n'
             'choose shooping list txt file'
         )
-        path_ = tkinter.filedialog.askopenfilename()  
+        # path_ = tkinter.filedialog.askopenfilename()  
        
-        #judge if path exists and if its txt file, or promp to selct again!
-        while len(path_) == 0:
-                print('no file selected !')
-                path_ = tkinter.filedialog.askopenfilename()
-        # txt format check
-        while '.txt' not in path_.split('/')[-1]:
-                print('please choose txtfile !')
-                path_ = tkinter.filedialog.askopenfilename()
+        # #judge if path exists and if its txt file, or promp to selct again!
+        # while len(path_) == 0:
+        #         print('no file selected !')
+        #         path_ = tkinter.filedialog.askopenfilename()
+        # # txt format check
+        # while '.txt' not in path_.split('/')[-1]:
+        #         print('please choose txtfile !')
+        #         path_ = tkinter.filedialog.askopenfilename()
+        path_ = input('input the path where the txt file is, e.g. /Users/front/Documents/shoplist.txt    ')
         return path_
     
     # open file and save text in a shoppinglist dict
