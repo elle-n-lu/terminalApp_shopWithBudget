@@ -1,0 +1,36 @@
+Adding a general description of the app would be nice and would pr
+ovide a user with an idea of what can be expected, before they learn about the features.
+
+step1:
+input budget which should be number
+input txt file path.
+txt file content each line should be combined with product name and keywords,and seperate by ','
+ such as: apple,1 kg,700g,kids
+the processed user shopping list should be a dict:
+{'Egg': ['700g', 'large'], 'Apple': ['1kg'], 'milk': ['2L']} 
+
+step2:
+wait program to produce data of product title which would be combined by product name and 
+keywords provided in shopping list and relative random price,
+
+this is to simulate the data which should be searched on realworld shopping website. 
+the final data structure should be a list with dict:
+[
+    {'6.80': 'Egg 700g',
+     '7.20': 'Egg large',
+     },
+    {'4.50': 'Apple 1kg',
+     },
+    {'5.3': 'milk 2L',}
+]
+
+step3:
+program would produce all possible combinations according to the fake searching data,
+and calculate the total price of each combination, then match with budget.
+if budget is lower than the smallest total price, then ask user if they still want to see the results or quit.
+if user want to continue, ask user if wanna save results in csv or just printed it.
+the final combinations structure should be list with dict:
+[ 
+    {16.6: [['Egg 700g','6.80'],['Apple 1kg','4.50'],[ 'milk 2L','5.3']]},
+    {17:[ ['Egg large','7.20'],['Apple 1kg','4.50'], ['milk 2L','5.3']]}
+]
