@@ -1,56 +1,12 @@
 import os
-import tkinter.filedialog
 import csv
 
 
-class analyzor:
+class Analyzor:
     # analyzor object need three params when initialized/created
     def __init__(self, budget, price_list) -> None:
         self.budget = budget
         self.price_list = price_list
-        # self.user_dict = user_dict
-        # self.search_lists = search_lists
-        # pass
-
-    # match keywords in shoplist and return remaining searching results
-    def search_item_match_records(self):
-        # general match the target amount of product in the list
-        # not consider adding nultiple weights to match the target amount for now!
-        search_keep_list = []
-        #loop product, keywords in userinput dict,
-        for key1, val1 in self.user_dict.items():
-            index1 = list(self.user_dict).index(key1)
-            item_search_dict = {}
-            # index of userinput is same as the search results
-            # get the product, price of the search result with the index of the item
-            t = 0
-            for price2, key2 in self.search_lists[index1].items():
-                # loop keyword in keywords list
-                s = 0
-                for std in val1:
-                    # id keyword is in the name in search results, then save the search record
-                    if str.lower(std) in str.lower(key2):
-                        item_search_dict[price2] = key2
-                    else:
-                        s += 1
-                if s == len(val1):
-                    t += 1
-            # if all keywords not match, ask customer to see other results or quit
-            if t == len(list(self.search_lists[index1])):
-                # if only one item in shoplist and no match, then quit
-                if len(self.search_lists) == 1:
-                    raise SystemExit(f'sorry, no search result match key words of {key1},')
-                # ask input to decide
-                print(f'sorry, no search result match key words of {key1},')
-                decision = input('you wanna see the rest press y; quit press enter ')
-                if decision != 'y':
-                    raise SystemExit('left')
-                else:
-                    continue
-            if len(item_search_dict) != 0:
-                search_keep_list.append(item_search_dict)
-        # save format is a list of dict: [{ price: name},{..},{..}]
-        return search_keep_list
 
     # pure function
     # add each element of 1st list to each ele of 2nd list
@@ -113,14 +69,7 @@ class analyzor:
 
     # ask user to choose a directory to save results in csv file
     def get_path(self):
-        # print('choose directory to save the result file:')
-        # path_ = tkinter.filedialog.askdirectory()
-        # # if user choose cancel, it will keep asking until user choose a dir
-        # while len(path_) == 0:
-        #     print('no directory selected')
-        #     path_ = tkinter.filedialog.askdirectory()
-        # return a dir path
-        path_ = input('input the path where you want to save the csv file, e.g. /Users/front/Documents/shoplist.txt')
+        path_ = os.path.dirname(os.path.abspath(__file__))
         return path_
 
     # each line example:
@@ -133,7 +82,7 @@ class analyzor:
             # select folder path to save csv
             else:
                 path_ =  self.get_path()
-                file_path = os.path.join(path_+'/', 'profiles1.csv')
+                file_path = os.path.join(path_+'/', 'results.csv')
                 
                 with open(file_path, 'w', newline='') as file:
                     writer = csv.writer(file)

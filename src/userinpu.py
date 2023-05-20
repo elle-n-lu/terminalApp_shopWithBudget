@@ -1,8 +1,5 @@
-from os import path
-import tkinter.filedialog
-import tkinter as tk
 
-class userinput:
+class Userinput:
     def __init__(self) -> None:
         pass
     # return budget by user input
@@ -30,16 +27,6 @@ class userinput:
             '\n'
             'choose shooping list txt file'
         )
-        # path_ = tkinter.filedialog.askopenfilename()  
-       
-        # #judge if path exists and if its txt file, or promp to selct again!
-        # while len(path_) == 0:
-        #         print('no file selected !')
-        #         path_ = tkinter.filedialog.askopenfilename()
-        # # txt format check
-        # while '.txt' not in path_.split('/')[-1]:
-        #         print('please choose txtfile !')
-        #         path_ = tkinter.filedialog.askopenfilename()
         path_ = input('input the path where the txt file is, e.g. /Users/front/Documents/shoplist.txt    ')
         return path_
     
@@ -60,7 +47,7 @@ class userinput:
         except FileNotFoundError:
             print('no file selected !')
     
-# cd = use 
+
 
 
 

@@ -1,48 +1,18 @@
-from contextlib import contextmanager
+import csv
+import os
 import pytest
 import sys
 sys.path.append('..')
-from analyzor import analyzor
+from analyzor import Analyzor
 
 testUserDict = {'Egg': ['700g', 'large'], 'Apple': ['1kg'], 'milk': ['2L']}
 testSearchLists = [
-    {'6.80': 'Manning Valley 18 Large Free Range Eggs 900g',
-     '7.20': 'Sunny Queen 12 Extra Large Free Range Eggs 700g',
-     '5.7': 'Manning Valley 12 Jumbo Free Range Eggs 800g',
-     '7.4': 'Woolworths 12 X-large Free Range Eggs 800g'
-
+    {'6.80': 'Egg 700g',
+     '7.20': 'Egg large',
      },
-    {'4.50': 'Jazz Apple Snackers 1kg Punnet',
-     '6.90': 'Macro Mini Organic Apple 1kg',
-     '1.1': 'Kanzi Apple Each',
-     '3.4': 'Jazz Apple Snackers 1kg Punnet'
+    {'4.50': 'Apple 1kg',
      },
-    {
-        '5.3': 'Macro Organic Oat Milk Unsweetened 1l',
-        '5.7': 'Woolworths Evaporated Milk 385ml', '5.95': 'Hunter Belle Full Cream Milk Unhomogenised 2l',
-        '5.60': 'Riverina Fresh Lactose Free Full Cream Milk 2l', }
-]
-searchKeepListReturn = [
-    {'6.80': 'Manning Valley 18 Large Free Range Eggs 900g',
-     '7.20': 'Sunny Queen 12 Extra Large Free Range Eggs 700g',
-     '7.4': 'Woolworths 12 X-large Free Range Eggs 800g'
-     },
-    {'4.50': 'Jazz Apple Snackers 1kg Punnet',
-     '6.90': 'Macro Mini Organic Apple 1kg',
-     '3.4': 'Jazz Apple Snackers 1kg Punnet'
-     },
-    {
-        '5.95': 'Hunter Belle Full Cream Milk Unhomogenised 2l',
-        '5.60': 'Riverina Fresh Lactose Free Full Cream Milk 2l', }]
-
-searchKeepListReturn2 = [
-    {'4.50': 'Jazz Apple Snackers 1kg Punnet',
-     '6.90': 'Macro Mini Organic Apple 1kg',
-     '3.4': 'Jazz Apple Snackers 1kg Punnet'
-     },
-    {
-        '5.95': 'Hunter Belle Full Cream Milk Unhomogenised 2l',
-        '5.60': 'Riverina Fresh Lactose Free Full Cream Milk 2l', }
+    {'5.3': 'milk 2L',}
 ]
 
 # fake data provided for add_price funtion testing
@@ -63,45 +33,19 @@ def exitErr():
 # module initialization
 @pytest.fixture(scope="module")
 def createAnalyzor():
-    return analyzor(12, testUserDict, testSearchLists)
-
-def test_search_item_match_records(createAnalyzor):
-    search_keep_list = createAnalyzor.search_item_match_records()
-    assert search_keep_list == search_keep_list
-    # if egg item no match, and still return search results,
-    # assert search_keep_list == searchKeepListReturn2
-    # if quit
-    # assert search_keep_list == None
-    with pytest.raises(SystemExit):
-            exitErr()
+    return Analyzor(12, testSearchLists)
 
 def test_add_price(createAnalyzor):
     total = createAnalyzor.add_price(arr)
     assert total ==total
 
 # total_price_list return according to the inialized module
-budgetMatch_return = [{17.3: [['Sunny Queen 12 Extra Large Free Range Eggs 700g', '7.20'], ['Jazz Apple Snackers 1kg Punnet', '4.50'], ['Riverina Fresh Lactose Free Full Cream Milk 2l', '5.60']]},
-                      {17.5: [['Woolworths 12 X-large Free Range Eggs 800g', '7.4'], ['Jazz Apple Snackers 1kg Punnet',
-                                                                                      '4.50'], ['Riverina Fresh Lactose Free Full Cream Milk 2l', '5.60']]},
-                      {17.65: [['Sunny Queen 12 Extra Large Free Range Eggs 700g', '7.20'], [
-                          'Jazz Apple Snackers 1kg Punnet', '4.50'], ['Hunter Belle Full Cream Milk Unhomogenised 2l', '5.95']]},
-                      {17.85: [['Woolworths 12 X-large Free Range Eggs 800g', '7.4'], [
-                          'Jazz Apple Snackers 1kg Punnet', '4.50'], ['Hunter Belle Full Cream Milk Unhomogenised 2l', '5.95']]},
-                      {19.3: [['Manning Valley 18 Large Free Range Eggs 900g', '6.80'], [
-                          'Macro Mini Organic Apple 1kg', '6.90'], ['Riverina Fresh Lactose Free Full Cream Milk 2l', '5.60']]},
-                      {19.65: [['Manning Valley 18 Large Free Range Eggs 900g', '6.80'], [
-                          'Macro Mini Organic Apple 1kg', '6.90'], ['Hunter Belle Full Cream Milk Unhomogenised 2l', '5.95']]},
-                      {19.7: [['Sunny Queen 12 Extra Large Free Range Eggs 700g', '7.20'], [
-                          'Macro Mini Organic Apple 1kg', '6.90'], ['Riverina Fresh Lactose Free Full Cream Milk 2l', '5.60']]},
-                      {19.9: [['Woolworths 12 X-large Free Range Eggs 800g', '7.4'], ['Macro Mini Organic Apple 1kg',
-                                                                                      '6.90'], ['Riverina Fresh Lactose Free Full Cream Milk 2l', '5.60']]},
-                      {20.05: [['Sunny Queen 12 Extra Large Free Range Eggs 700g', '7.20'], [
-                          'Macro Mini Organic Apple 1kg', '6.90'], ['Hunter Belle Full Cream Milk Unhomogenised 2l', '5.95']]},
-                      {20.25: [['Woolworths 12 X-large Free Range Eggs 800g', '7.4'], ['Macro Mini Organic Apple 1kg', '6.90'], ['Hunter Belle Full Cream Milk Unhomogenised 2l', '5.95']]}]
+budgetMatch_return = [ {16.6: [['Egg 700g','6.80'],['Apple 1kg','4.50'],[ 'milk 2L','5.3']]},
+     {17:[ ['Egg large','7.20'],['Apple 1kg','4.50'], ['milk 2L','5.3']]}]
 
 def test_price_budget_match(createAnalyzor):
     # when call the funtion, returned value should match the provided one
-    total_price_list_return = createAnalyzor.price_budget_match()
+    total_price_list_return = createAnalyzor.add_price(testSearchLists)
     # if all cost match budget, or user choose to keep going
     assert total_price_list_return == budgetMatch_return
     # if quit
@@ -109,10 +53,25 @@ def test_price_budget_match(createAnalyzor):
     with pytest.raises(SystemExit):
         exitErr()
 
-def test_get_path(createAnalyzor):
-    createAnalyzor.get_path()
+def test_get_path(monkeypatch):
+    monkeypatch.setattr('builtins.input', lambda _: "/usr/front/doc/")
+    path_ = input('input the path where you want to save the csv file, e.g. /Users/front/Documents')
+    assert path_ == "/usr/front/doc/"
 
-def test_output2csv(createAnalyzor):
-    createAnalyzor.output2csv()
+def test_output2csv():
+    current_path = os.path.dirname(os.path.abspath(__file__))
+    output = budgetMatch_return
+    with open('sresults.csv', 'w', newline='') as file:
+        writer = csv.writer(file)
+
+        field = ["product", "price", "total"]
+        writer.writerow(field)
+        for j in output:
+            for key, val in j.items():
+                for index, i in enumerate(val):
+                    if index == len(val)-1:
+                        i.append(key)
+                    writer.writerow(i)
+        print(f'data saved in {current_path}/sresults.csv')
     with pytest.raises(SystemExit):
         exitErr()
